@@ -10,3 +10,4 @@
 + 2018.11.26&emsp;接口参数化后的Jmeter运行的大概介绍(testPlan/csv/httpSampler/assertContent)---很概要，其他人没有实操
 + 2018.11.27&emsp;`《google软件测试之道》工程师分类/风险分析/工作内容介绍，产品ACC`
 + 2018.11.28&emsp;客户端->nginx->网络服务器->应用服务器->redis服务器->db
++ 2018.11.29&emsp;明确12月份的OKR
