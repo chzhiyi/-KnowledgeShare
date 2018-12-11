@@ -18,3 +18,4 @@
 + 2018.12.06&emsp;`性能测试发现、定位、解决流程，单接口问题分类，tcpdump抓包`---well done
 + 2018.12.07&emsp;确定下下周部门内性能的分享内容&分享人
 + 2018.12.09&emsp;cat/grep/sort/uniq查询表名重复次数
++ 2018.12.10&emsp;tcpdump抓包/k8s下载pcap
