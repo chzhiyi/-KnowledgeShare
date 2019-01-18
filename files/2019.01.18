@@ -1,0 +1,31 @@
+初识HTML
+一、什么是HTML？
+HTML是一种描述网页的语言
+HTML指的是超文本标记语言（HyperText Markup Language）
+HTML不是一种编程语言，而是一种标记语言（markup language）
+标记语言是一套标记标签
+HTML使用标记标签来描述网页
+
+二、HTML标签
+HTML标记标签通常被称为HTML标签（HTML tag）
+HTML 标签通常是成对出现的，比如 <b> 和 </b>
+标签对中的第一个标签是开始标签，第二个标签是结束标签
+开始和结束标签也被称为开放标签和闭合标签
+
+三、HTML 文档 = 网页
+HTML 文档描述网页
+HTML 文档包含 HTML 标签和纯文本
+HTML 文档也被称为网页
+Web 浏览器的作用是读取 HTML 文档，并以网页的形式显示出它们。浏览器不会显示 HTML 标签，而是使用标签来解释页面的内容：
+
+<html>
+<body>
+<h1>My First Heading</h1>
+<p>My First paragraph</p>
+</body>
+</html>
+
+<html> 与 </html> 之间的文本描述网页
+<body> 与 </body> 之间的文本是可见的页面内容
+<h1> 与 </h1> 之间的文本被显示为标题
+<p> 与 </p> 之间的文本被显示为段落
