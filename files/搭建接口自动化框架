@@ -1,0 +1,1272 @@
+参考网址：
+testerHome接口自动化平台介绍页：https://testerhome.com/opensource_projects/37，前台账号admin，密码admin369874125
+github地址：https://github.com/githublitao/
+mac下安装vue.js开发环境：https://www.jianshu.com/p/918314e9f757，https://blog.csdn.net/ytangdigl/article/details/75095787，https://blog.csdn.net/sinat_31102083/article/details/79038124
+
+
+
+1. 卸载Python2.7.*（也不可以不删除，python2跟python3共存）
+	本机mac自带的Python版本为2.7.10。
+	卸载Python 2.7：sudo rm -R /System/Library/Frameworks/Python.framework/Versions/2.7
+	删除2.7版本的链接：sudo rm /System/Library/Frameworks/Python.framework/Versions/Current
+	删除/user/bin/目录下2.7版本相关的符号链接：sudo rm /usr/bin/{pydoc,python,pythonw,python-config}
+	检测2.7版本是否删除完成：到相关文件夹下查看文件是否删除，命令行输入“python”是否有正确输出
+2. 安装python3.7.2，会自动安装pip3
+	python官网下载https://www.python.org/ftp/python/3.7.2/python-3.7.2-macosx10.9.pkg，双击安装
+	验证是否安装成功：输入python3，进入命令行界面；输入pip3显示它的帮助命令
+3. 下载github接口自动化源码，并解压，如解压到/workspace/softwares/api_automation_test-master
+	https://github.com/githublitao/api_automation_test/archive/master.zip
+
+
+4. cmd到根目录下安装相关依赖包：
+	api_automation_test-master> pip3 install -r requirements.txt
+
+	Collecting certifi==2018.1.18 (from -r requirements.txt (line 1))
+	  Downloading https://files.pythonhosted.org/packages/fa/53/0a5562e2b96749e99a3d55d8c7df91c9e4d8c39a9da1f1a49ac9e4f4b39f/certifi-2018.1.18-py2.py3-none-any.whl (151kB)
+	    100% |████████████████████████████████| 153kB 62kB/s
+	Collecting Django==2.0.2 (from -r requirements.txt (line 2))
+	  Downloading https://files.pythonhosted.org/packages/48/b1/4e4875dabd9603c89ca753313fd13f429426e4a80a0264603a30d56e0338/Django-2.0.2-py3-none-any.whl (7.1MB)
+	    100% |████████████████████████████████| 7.1MB 15kB/s
+	Collecting django-cors-headers==2.1.0 (from -r requirements.txt (line 3))
+	  Downloading https://files.pythonhosted.org/packages/10/97/40b519badff93449706cd2cab3f328e1898e627bb218e3429c5581ad1932/django_cors_headers-2.1.0-py2.py3-none-any.whl
+	Collecting djangorestframework==3.7.7 (from -r requirements.txt (line 4))
+	  Downloading https://files.pythonhosted.org/packages/7c/0f/70957d583a9040c902b22dfab88323c1be61266eaddb1b3463a401004856/djangorestframework-3.7.7-py2.py3-none-any.whl (1.1MB)
+	    100% |████████████████████████████████| 1.1MB 193kB/s
+	Collecting idna==2.6 (from -r requirements.txt (line 5))
+	  Downloading https://files.pythonhosted.org/packages/27/cc/6dd9a3869f15c2edfab863b992838277279ce92663d334df9ecf5106f5c6/idna-2.6-py2.py3-none-any.whl (56kB)
+	    100% |████████████████████████████████| 61kB 151kB/s
+	Collecting pytz==2017.3 (from -r requirements.txt (line 6))
+	  Downloading https://files.pythonhosted.org/packages/a3/7f/e7d1acbd433b929168a4fb4182a2ff3c33653717195a26c1de099ad1ef29/pytz-2017.3-py2.py3-none-any.whl (511kB)
+	    100% |████████████████████████████████| 512kB 182kB/s
+	Collecting requests==2.18.4 (from -r requirements.txt (line 7))
+	  Downloading https://files.pythonhosted.org/packages/49/df/50aa1999ab9bde74656c2919d9c0c085fd2b3775fd3eca826012bef76d8c/requests-2.18.4-py2.py3-none-any.whl (88kB)
+	    100% |████████████████████████████████| 92kB 163kB/s
+	Collecting django-rest-swagger==2.1.2 (from -r requirements.txt (line 8))
+	  Downloading https://files.pythonhosted.org/packages/2c/12/28d0677756283d913f8371ad7590e16f5e6c8444044f5b1b1586f956e610/django_rest_swagger-2.1.2-py2.py3-none-any.whl (747kB)
+	    100% |████████████████████████████████| 757kB 245kB/s
+	Collecting python-docx==0.8.6 (from -r requirements.txt (line 9))
+	  Downloading https://files.pythonhosted.org/packages/2e/07/6a89e91c4fa32f074b77a05564e926420b28e5966ee0fc2a1983805acb3c/python-docx-0.8.6.tar.gz (5.3MB)
+	    100% |████████████████████████████████| 5.3MB 504kB/s
+	Collecting django-crispy-forms==1.7.2 (from -r requirements.txt (line 10))
+	  Downloading https://files.pythonhosted.org/packages/9a/05/6bad05742d185ec2fabfa4deab05cafde286eb3f383fba24b3674340aca2/django_crispy_forms-1.7.2-py2.py3-none-any.whl (105kB)
+	    100% |████████████████████████████████| 112kB 500kB/s
+	Collecting django-formtools==2.1 (from -r requirements.txt (line 11))
+	  Downloading https://files.pythonhosted.org/packages/97/3f/b8e04c41c028d5cdad651393abea1f686d846c717d8ab5d5ebe2974f711c/django_formtools-2.1-py2.py3-none-any.whl (132kB)
+	    100% |████████████████████████████████| 133kB 335kB/s
+	Collecting django-import-export==1.0.0 (from -r requirements.txt (line 12))
+	  Downloading https://files.pythonhosted.org/packages/a5/d9/eac5df66fc65153aeaa4e1c72b283a5560d9502ece703cd9f1d1afd76409/django_import_export-1.0.0-py2.py3-none-any.whl (72kB)
+	    100% |████████████████████████████████| 81kB 11.6MB/s
+	Collecting django-reversion==2.0.13 (from -r requirements.txt (line 13))
+	  Downloading https://files.pythonhosted.org/packages/a5/4d/c71ad72aa87f6a25a64dc0adc707926088a8f23bfd437a70c7283a23cbf7/django_reversion-2.0.13-py2.py3-none-any.whl (85kB)
+	    100% |████████████████████████████████| 92kB 23.9MB/s
+	Collecting python-crontab==2.2.8 (from -r requirements.txt (line 14))
+	  Downloading https://files.pythonhosted.org/packages/bd/03/c512ff706325f61a8788b2776ba5989507eb8606de64c3eafe8676dd06f0/python-crontab-2.2.8.tar.gz (40kB)
+	    100% |████████████████████████████████| 40kB 21.0MB/s
+	Collecting PyMySQL==0.8.1 (from -r requirements.txt (line 15))
+	  Downloading https://files.pythonhosted.org/packages/32/e8/222d9e1c7821f935d6dba8d4c60b9985124149b35a9f93a84f0b98afc219/PyMySQL-0.8.1-py2.py3-none-any.whl (81kB)
+	    100% |████████████████████████████████| 81kB 14.7MB/s
+	Collecting XlsxWriter==1.0.5 (from -r requirements.txt (line 16))
+	  Downloading https://files.pythonhosted.org/packages/33/50/136b801d106fcebb2428a764e5c599e020d8227a3623db078e05eb4793a5/XlsxWriter-1.0.5-py2.py3-none-any.whl (142kB)
+	    100% |████████████████████████████████| 143kB 325kB/s
+	Collecting chardet<3.1.0,>=3.0.2 (from requests==2.18.4->-r requirements.txt (line 7))
+	  Downloading https://files.pythonhosted.org/packages/bc/a9/01ffebfb562e4274b6487b4bb1ddec7ca55ec7510b22e4c51f14098443b8/chardet-3.0.4-py2.py3-none-any.whl (133kB)
+	    100% |████████████████████████████████| 143kB 321kB/s
+	Collecting urllib3<1.23,>=1.21.1 (from requests==2.18.4->-r requirements.txt (line 7))
+	  Downloading https://files.pythonhosted.org/packages/63/cb/6965947c13a94236f6d4b8223e21beb4d576dc72e8130bd7880f600839b8/urllib3-1.22-py2.py3-none-any.whl (132kB)
+	    100% |████████████████████████████████| 133kB 480kB/s
+	Collecting coreapi>=2.3.0 (from django-rest-swagger==2.1.2->-r requirements.txt (line 8))
+	  Downloading https://files.pythonhosted.org/packages/fc/3a/9dedaad22962770edd334222f2b3c3e7ad5e1c8cab1d6a7992c30329e2e5/coreapi-2.3.3-py2.py3-none-any.whl
+	Collecting simplejson (from django-rest-swagger==2.1.2->-r requirements.txt (line 8))
+	  Downloading https://files.pythonhosted.org/packages/e3/24/c35fb1c1c315fc0fffe61ea00d3f88e85469004713dab488dee4f35b0aff/simplejson-3.16.0.tar.gz (81kB)
+	    100% |████████████████████████████████| 81kB 303kB/s
+	Collecting openapi-codec>=1.3.1 (from django-rest-swagger==2.1.2->-r requirements.txt (line 8))
+	  Downloading https://files.pythonhosted.org/packages/78/e5/e0b5aba60c645dde952bc8a9df1f2b0bef27302908839b0a29284c9245d4/openapi-codec-1.3.2.tar.gz
+	Collecting lxml>=2.3.2 (from python-docx==0.8.6->-r requirements.txt (line 9))
+	  Downloading https://files.pythonhosted.org/packages/8b/fb/f56f79fd3ab36774a5d8662deb0871cce815c8f8a1994ede49b30e678741/lxml-4.3.0-cp37-cp37m-macosx_10_6_intel.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl (8.7MB)
+	    100% |████████████████████████████████| 8.7MB 531kB/s
+	Collecting diff-match-patch (from django-import-export==1.0.0->-r requirements.txt (line 12))
+	  Downloading https://files.pythonhosted.org/packages/f0/2a/5ba07def0e9107d935aba62cf632afbd0f7c723a98af47ccbcab753d2452/diff-match-patch-20181111.tar.gz (58kB)
+	    100% |████████████████████████████████| 61kB 27.9MB/s
+	Collecting tablib (from django-import-export==1.0.0->-r requirements.txt (line 12))
+	  Downloading https://files.pythonhosted.org/packages/e4/9f/cba4e1145ca9ec84d9326f7ce38c6b5f37d9be8bc1af1bd8b19c20374095/tablib-0.12.1.tar.gz (63kB)
+	    100% |████████████████████████████████| 71kB 29.0MB/s
+	Collecting python-dateutil (from python-crontab==2.2.8->-r requirements.txt (line 14))
+	  Downloading https://files.pythonhosted.org/packages/74/68/d87d9b36af36f44254a8d512cbfc48369103a3b9e474be9bdfe536abfc45/python_dateutil-2.7.5-py2.py3-none-any.whl (225kB)
+	    100% |████████████████████████████████| 235kB 420kB/s
+	Collecting coreschema (from coreapi>=2.3.0->django-rest-swagger==2.1.2->-r requirements.txt (line 8))
+	  Downloading https://files.pythonhosted.org/packages/93/08/1d105a70104e078718421e6c555b8b293259e7fc92f7e9a04869947f198f/coreschema-0.0.4.tar.gz
+	Collecting itypes (from coreapi>=2.3.0->django-rest-swagger==2.1.2->-r requirements.txt (line 8))
+	  Downloading https://files.pythonhosted.org/packages/d3/24/5e511590f95582efe64b8ad2f6dadd85c5563c9dcf40171ea5a70adbf5a9/itypes-1.1.0.tar.gz
+	Collecting uritemplate (from coreapi>=2.3.0->django-rest-swagger==2.1.2->-r requirements.txt (line 8))
+	  Downloading https://files.pythonhosted.org/packages/e5/7d/9d5a640c4f8bf2c8b1afc015e9a9d8de32e13c9016dcc4b0ec03481fb396/uritemplate-3.0.0-py2.py3-none-any.whl
+	Collecting odfpy (from tablib->django-import-export==1.0.0->-r requirements.txt (line 12))
+	  Downloading https://files.pythonhosted.org/packages/85/7d/8f6d1f2a4683be362b101c00232b4c3839e4e4a90e0945d8d43ec6aa671d/odfpy-1.4.0.tar.gz (715kB)
+	    100% |████████████████████████████████| 716kB 303kB/s
+	Collecting openpyxl (from tablib->django-import-export==1.0.0->-r requirements.txt (line 12))
+	  Downloading https://files.pythonhosted.org/packages/08/8a/509eb6f58672288da9a5884e1cc7e90819bc8dbef501161c4b40a6a4e46b/openpyxl-2.5.12.tar.gz (173kB)
+	    100% |████████████████████████████████| 174kB 271kB/s
+	Collecting unicodecsv (from tablib->django-import-export==1.0.0->-r requirements.txt (line 12))
+	  Downloading https://files.pythonhosted.org/packages/6f/a4/691ab63b17505a26096608cc309960b5a6bdf39e4ba1a793d5f9b1a53270/unicodecsv-0.14.1.tar.gz
+	Collecting xlrd (from tablib->django-import-export==1.0.0->-r requirements.txt (line 12))
+	  Downloading https://files.pythonhosted.org/packages/b0/16/63576a1a001752e34bf8ea62e367997530dc553b689356b9879339cf45a4/xlrd-1.2.0-py2.py3-none-any.whl (103kB)
+	    100% |████████████████████████████████| 112kB 272kB/s
+	Collecting xlwt (from tablib->django-import-export==1.0.0->-r requirements.txt (line 12))
+	  Downloading https://files.pythonhosted.org/packages/44/48/def306413b25c3d01753603b1a222a011b8621aed27cd7f89cbc27e6b0f4/xlwt-1.3.0-py2.py3-none-any.whl (99kB)
+	    100% |████████████████████████████████| 102kB 249kB/s
+	Collecting pyyaml (from tablib->django-import-export==1.0.0->-r requirements.txt (line 12))
+	  Downloading https://files.pythonhosted.org/packages/9e/a3/1d13970c3f36777c583f136c136f804d70f500168edc1edea6daa7200769/PyYAML-3.13.tar.gz (270kB)
+	    100% |████████████████████████████████| 276kB 237kB/s
+	Collecting six>=1.5 (from python-dateutil->python-crontab==2.2.8->-r requirements.txt (line 14))
+	  Downloading https://files.pythonhosted.org/packages/73/fb/00a976f728d0d1fecfe898238ce23f502a721c0ac0ecfedb80e0d88c64e9/six-1.12.0-py2.py3-none-any.whl
+	Collecting jinja2 (from coreschema->coreapi>=2.3.0->django-rest-swagger==2.1.2->-r requirements.txt (line 8))
+	  Downloading https://files.pythonhosted.org/packages/7f/ff/ae64bacdfc95f27a016a7bed8e8686763ba4d277a78ca76f32659220a731/Jinja2-2.10-py2.py3-none-any.whl (126kB)
+	    100% |████████████████████████████████| 133kB 251kB/s
+	Collecting defusedxml (from odfpy->tablib->django-import-export==1.0.0->-r requirements.txt (line 12))
+	  Downloading https://files.pythonhosted.org/packages/87/1c/17f3e3935a913dfe2a5ca85fa5ccbef366bfd82eb318b1f75dadbf0affca/defusedxml-0.5.0-py2.py3-none-any.whl
+	Collecting jdcal (from openpyxl->tablib->django-import-export==1.0.0->-r requirements.txt (line 12))
+	  Downloading https://files.pythonhosted.org/packages/a0/38/dcf83532480f25284f3ef13f8ed63e03c58a65c9d3ba2a6a894ed9497207/jdcal-1.4-py2.py3-none-any.whl
+	Collecting et_xmlfile (from openpyxl->tablib->django-import-export==1.0.0->-r requirements.txt (line 12))
+	  Downloading https://files.pythonhosted.org/packages/22/28/a99c42aea746e18382ad9fb36f64c1c1f04216f41797f2f0fa567da11388/et_xmlfile-1.0.1.tar.gz
+	Collecting MarkupSafe>=0.23 (from jinja2->coreschema->coreapi>=2.3.0->django-rest-swagger==2.1.2->-r requirements.txt (line 8))
+	  Downloading https://files.pythonhosted.org/packages/96/52/eef455862764cb6d6c136aa52c7f9fc4e7c1c644790a7107b1244a2b8a53/MarkupSafe-1.1.0-cp37-cp37m-macosx_10_6_intel.whl
+	Installing collected packages: certifi, pytz, Django, django-cors-headers, djangorestframework, idna, chardet, urllib3, requests, MarkupSafe, jinja2, coreschema, itypes, uritemplate, coreapi, simplejson, openapi-codec, django-rest-swagger, lxml, python-docx, django-crispy-forms, django-formtools, diff-match-patch, defusedxml, odfpy, jdcal, et-xmlfile, openpyxl, unicodecsv, xlrd, xlwt, pyyaml, tablib, django-import-export, django-reversion, six, python-dateutil, python-crontab, PyMySQL, XlsxWriter
+	  Running setup.py install for coreschema ... done
+	  Running setup.py install for itypes ... done
+	  Running setup.py install for simplejson ... done
+	  Running setup.py install for openapi-codec ... done
+	  Running setup.py install for python-docx ... done
+	  Running setup.py install for diff-match-patch ... done
+	  Running setup.py install for odfpy ... done
+	  Running setup.py install for et-xmlfile ... done
+	  Running setup.py install for openpyxl ... done
+	  Running setup.py install for unicodecsv ... done
+	  Running setup.py install for pyyaml ... done
+	  Running setup.py install for tablib ... done
+	  Running setup.py install for python-crontab ... done
+	Successfully installed Django-2.0.2 MarkupSafe-1.1.0 PyMySQL-0.8.1 XlsxWriter-1.0.5 certifi-2018.1.18 chardet-3.0.4 coreapi-2.3.3 coreschema-0.0.4 defusedxml-0.5.0 diff-match-patch-20181111 django-cors-headers-2.1.0 django-crispy-forms-1.7.2 django-formtools-2.1 django-import-export-1.0.0 django-rest-swagger-2.1.2 django-reversion-2.0.13 djangorestframework-3.7.7 et-xmlfile-1.0.1 idna-2.6 itypes-1.1.0 jdcal-1.4 jinja2-2.10 lxml-4.3.0 odfpy-1.4.0 openapi-codec-1.3.2 openpyxl-2.5.12 
+
+	api_automation_test-master> pip3 install https://github.com/darklow/django-suit/tarball/v2
+
+	Collecting https://github.com/darklow/django-suit/tarball/v2
+	  Downloading https://github.com/darklow/django-suit/tarball/v2 (766kB)
+	    100% |████████████████████████████████| 768kB 1.1MB/s
+	Installing collected packages: django-suit
+	  Running setup.py install for django-suit ... done
+	Successfully installed django-suit-2.0a1
+
+5. 进入api_automation_test/settings.py，修改USER,PASSWORD,HOST,PORT四项内容
+	DATABASES = {
+	    'default': {
+	        'ENGINE': 'django.db.backends.mysql',
+	        'NAME': 'api_test',
+	        'USER': 'root',
+	        'PASSWORD': '123456',
+	        # 'HOST': '120.79.232.23',
+	        'HOST': '127.0.0.1',
+	        'PORT': '3306',
+	    }
+	}
+
+6. cmd到根目录下，让 Django 知道我们在我们的模型有一些变更: python3 manage.py makemigrations
+	第一次报错：django.db.utils.InternalError: (1049, "Unknown database 'api_test'")；创建数据库create database api_test;
+	第二次执行正确：api_automation_test-master> python3 manage.py makemigrations
+		Migrations for 'api_test':
+		  api_test/migrations/0001_initial.py
+		    - Create model ApiGroupLevelFirst
+		    - Create model ApiHead
+		    - Create model ApiInfo
+		    - Create model ApiOperationHistory
+		    - Create model ApiParameter
+		    - Create model ApiParameterRaw
+		    - Create model APIRequestHistory
+		    - Create model ApiResponse
+		    - Create model AutomationCaseApi
+		    - Create model AutomationCaseTestResult
+		    - Create model AutomationGroupLevelFirst
+		    - Create model AutomationHead
+		    - Create model AutomationParameter
+		    - Create model AutomationParameterRaw
+		    - Create model AutomationReportSendConfig
+		    - Create model AutomationResponseJson
+		    - Create model AutomationTaskRunTime
+		    - Create model AutomationTestCase
+		    - Create model AutomationTestResult
+		    - Create model AutomationTestTask
+		    - Create model CustomMethod
+		    - Create model GlobalHost
+		    - Create model Project
+		    - Create model ProjectDynamic
+		    - Create model ProjectMember
+		    - Create model UserProfile
+		    - Create model VisitorsRecord
+		    - Add field project to globalhost
+		    - Add field project to custommethod
+		    - Add field Host to automationtesttask
+		    - Add field project to automationtesttask
+		    - Add field project to automationtestcase
+		    - Add field user to automationtestcase
+		    - Add field project to automationtaskruntime
+		    - Add field project to automationreportsendconfig
+		    - Add field project to automationgrouplevelfirst
+		    - Add field automationTestCase to automationcaseapi
+		    - Add field project to apiinfo
+		    - Add field userUpdate to apiinfo
+		    - Add field api to apihead
+		    - Add field project to apigrouplevelfirst
+
+7. 创造或修改表结构: python3 manage.py migrate
+	第一次报错：django.db.utils.InternalError: (1366, "Incorrect string value: '\\xE6\\x8E\\xA5\\xE5\\x8F\\xA3...' for column 'name' at row 1")，原因是：由于字段中有汉字，创建库时添加charset=utf8。
+	第二次执行正确：api_automation_test-master> python3 manage.py migrate
+		Operations to perform:
+		  Apply all migrations: admin, api_test, auth, authtoken, contenttypes, sessions
+		Running migrations:
+		  Applying contenttypes.0001_initial... OK
+		  Applying auth.0001_initial... OK
+		  Applying admin.0001_initial... OK
+		  Applying admin.0002_logentry_remove_auto_add... OK
+		  Applying api_test.0001_initial... OK
+		  Applying contenttypes.0002_remove_content_type_name... OK
+		  Applying auth.0002_alter_permission_name_max_length... OK
+		  Applying auth.0003_alter_user_email_max_length... OK
+		  Applying auth.0004_alter_user_username_opts... OK
+		  Applying auth.0005_alter_user_last_login_null... OK
+		  Applying auth.0006_require_contenttypes_0002... OK
+		  Applying auth.0007_alter_validators_add_error_messages... OK
+		  Applying auth.0008_alter_user_username_max_length... OK
+		  Applying auth.0009_alter_user_last_name_max_length... OK
+		  Applying authtoken.0001_initial... OK
+		  Applying authtoken.0002_auto_20160226_1747... OK
+		  Applying sessions.0001_initial... OK
+
+			mysql> show tables;
+			+-------------------------------------+
+			| Tables_in_api_test                  |
+			+-------------------------------------+
+			| api_test_apigrouplevelfirst         |
+			| api_test_apihead                    |
+			| api_test_apiinfo                    |
+			| api_test_apioperationhistory        |
+			| api_test_apiparameter               |
+			| api_test_apiparameterraw            |
+			| api_test_apirequesthistory          |
+			| api_test_apiresponse                |
+			| api_test_automationcaseapi          |
+			| api_test_automationcasetestresult   |
+			| api_test_automationgrouplevelfirst  |
+			| api_test_automationhead             |
+			| api_test_automationparameter        |
+			| api_test_automationparameterraw     |
+			| api_test_automationreportsendconfig |
+			| api_test_automationresponsejson     |
+			| api_test_automationtaskruntime      |
+			| api_test_automationtestcase         |
+			| api_test_automationtestresult       |
+			| api_test_automationtesttask         |
+			| api_test_custommethod               |
+			| api_test_globalhost                 |
+			| api_test_project                    |
+			| api_test_projectdynamic             |
+			| api_test_projectmember              |
+			| api_test_userprofile                |
+			| api_test_visitorsrecord             |
+			| auth_group                          |
+			| auth_group_permissions              |
+			| auth_permission                     |
+			| auth_user                           |
+			| auth_user_groups                    |
+			| auth_user_user_permissions          |
+			| authtoken_token                     |
+			| django_admin_log                    |
+			| django_content_type                 |
+			| django_migrations                   |
+			| django_session                      |
+			+-------------------------------------+
+			38 rows in set (0.00 sec)
+			mysql> select t.* from information_schema.tables t where t.table_schema='api_test';
+			+---------------+--------------+-------------------------------------+------------+--------+---------+------------+------------+----------------+-------------+-----------------+--------------+-----------+----------------+---------------------+---------------------+------------+-------------------+----------+----------------+---------------+
+			| TABLE_CATALOG | TABLE_SCHEMA | TABLE_NAME                          | TABLE_TYPE | ENGINE | VERSION | ROW_FORMAT | TABLE_ROWS | AVG_ROW_LENGTH | DATA_LENGTH | MAX_DATA_LENGTH | INDEX_LENGTH | DATA_FREE | AUTO_INCREMENT | CREATE_TIME         | UPDATE_TIME         | CHECK_TIME | TABLE_COLLATION   | CHECKSUM | CREATE_OPTIONS | TABLE_COMMENT |
+			+---------------+--------------+-------------------------------------+------------+--------+---------+------------+------------+----------------+-------------+-----------------+--------------+-----------+----------------+---------------------+---------------------+------------+-------------------+----------+----------------+---------------+
+			| def           | api_test     | api_test_apigrouplevelfirst         | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        16384 |         0 |              1 | 2019-01-21 11:02:41 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | api_test_apihead                    | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        16384 |         0 |              1 | 2019-01-21 11:02:41 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | api_test_apiinfo                    | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        49152 |         0 |              1 | 2019-01-21 11:02:42 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | api_test_apioperationhistory        | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        32768 |         0 |              1 | 2019-01-21 11:02:42 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | api_test_apiparameter               | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        16384 |         0 |              1 | 2019-01-21 11:02:41 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | api_test_apiparameterraw            | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        16384 |         0 |              1 | 2019-01-21 11:02:41 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | api_test_apirequesthistory          | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        16384 |         0 |              1 | 2019-01-21 11:02:41 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | api_test_apiresponse                | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        16384 |         0 |              1 | 2019-01-21 11:02:41 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | api_test_automationcaseapi          | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        16384 |         0 |              1 | 2019-01-21 11:02:41 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | api_test_automationcasetestresult   | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        16384 |         0 |              1 | 2019-01-21 11:02:41 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | api_test_automationgrouplevelfirst  | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        16384 |         0 |              1 | 2019-01-21 11:02:41 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | api_test_automationhead             | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        16384 |         0 |              1 | 2019-01-21 11:02:41 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | api_test_automationparameter        | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        16384 |         0 |              1 | 2019-01-21 11:02:41 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | api_test_automationparameterraw     | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        16384 |         0 |              1 | 2019-01-21 11:02:41 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | api_test_automationreportsendconfig | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        16384 |         0 |              1 | 2019-01-21 11:02:41 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | api_test_automationresponsejson     | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        16384 |         0 |              1 | 2019-01-21 11:02:41 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | api_test_automationtaskruntime      | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        16384 |         0 |              1 | 2019-01-21 11:02:41 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | api_test_automationtestcase         | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        49152 |         0 |              1 | 2019-01-21 11:02:42 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | api_test_automationtestresult       | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        16384 |         0 |              1 | 2019-01-21 11:02:41 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | api_test_automationtesttask         | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        32768 |         0 |              1 | 2019-01-21 11:02:41 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | api_test_custommethod               | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        16384 |         0 |              1 | 2019-01-21 11:02:41 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | api_test_globalhost                 | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        16384 |         0 |              1 | 2019-01-21 11:02:41 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | api_test_project                    | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        16384 |         0 |              1 | 2019-01-21 11:02:42 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | api_test_projectdynamic             | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        32768 |         0 |              1 | 2019-01-21 11:02:42 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | api_test_projectmember              | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        32768 |         0 |              1 | 2019-01-21 11:02:42 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | api_test_userprofile                | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        16384 |         0 |              1 | 2019-01-21 11:02:42 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | api_test_visitorsrecord             | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |            0 |         0 |              1 | 2019-01-21 11:02:41 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | auth_group                          | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        16384 |         0 |              1 | 2019-01-21 11:02:40 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | auth_group_permissions              | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        32768 |         0 |              1 | 2019-01-21 11:02:40 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | auth_permission                     | BASE TABLE | InnoDB |      10 | Dynamic    |         18 |            910 |       16384 |               0 |        16384 |         0 |             19 | 2019-01-21 11:02:41 | 2019-01-21 11:02:42 | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | auth_user                           | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        16384 |         0 |              1 | 2019-01-21 11:02:42 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | auth_user_groups                    | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        32768 |         0 |              1 | 2019-01-21 11:02:40 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | auth_user_user_permissions          | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        32768 |         0 |              1 | 2019-01-21 11:02:40 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | authtoken_token                     | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        16384 |         0 |           NULL | 2019-01-21 11:02:42 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | django_admin_log                    | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |        32768 |         0 |              1 | 2019-01-21 11:02:42 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | django_content_type                 | BASE TABLE | InnoDB |      10 | Dynamic    |         33 |            496 |       16384 |               0 |        16384 |         0 |             34 | 2019-01-21 11:02:41 | 2019-01-21 11:02:42 | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | django_migrations                   | BASE TABLE | InnoDB |      10 | Dynamic    |         17 |            963 |       16384 |               0 |            0 |         0 |             18 | 2019-01-21 11:02:40 | 2019-01-21 11:02:42 | NULL       | latin1_swedish_ci |     NULL |                |               |
+			| def           | api_test     | django_session                      | BASE TABLE | InnoDB |      10 | Dynamic    |          0 |              0 |       16384 |               0 |            0 |         0 |           NULL | 2019-01-21 11:02:42 | NULL                | NULL       | latin1_swedish_ci |     NULL |                |               |
+			+---------------+--------------+-------------------------------------+------------+--------+---------+------------+------------+----------------+-------------+-----------------+--------------+-----------+----------------+---------------------+---------------------+------------+-------------------+----------+----------------+---------------+
+			38 rows in set (0.01 sec)
+			mysql> select concat('drop table if exists ',table_name,';') from information_schema.tables t where t.table_schema='api_test';
+			+-----------------------------------------------------------+
+			| concat('drop table if exists ',table_name,';')            |
+			+-----------------------------------------------------------+
+			| drop table if exists api_test_apigrouplevelfirst;         |
+			| drop table if exists api_test_apihead;                    |
+			| drop table if exists api_test_apiinfo;                    |
+			| drop table if exists api_test_apioperationhistory;        |
+			| drop table if exists api_test_apiparameter;               |
+			| drop table if exists api_test_apiparameterraw;            |
+			| drop table if exists api_test_apirequesthistory;          |
+			| drop table if exists api_test_apiresponse;                |
+			| drop table if exists api_test_automationcaseapi;          |
+			| drop table if exists api_test_automationcasetestresult;   |
+			| drop table if exists api_test_automationgrouplevelfirst;  |
+			| drop table if exists api_test_automationhead;             |
+			| drop table if exists api_test_automationparameter;        |
+			| drop table if exists api_test_automationparameterraw;     |
+			| drop table if exists api_test_automationreportsendconfig; |
+			| drop table if exists api_test_automationresponsejson;     |
+			| drop table if exists api_test_automationtaskruntime;      |
+			| drop table if exists api_test_automationtestcase;         |
+			| drop table if exists api_test_automationtestresult;       |
+			| drop table if exists api_test_automationtesttask;         |
+			| drop table if exists api_test_custommethod;               |
+			| drop table if exists api_test_globalhost;                 |
+			| drop table if exists api_test_project;                    |
+			| drop table if exists api_test_projectdynamic;             |
+			| drop table if exists api_test_projectmember;              |
+			| drop table if exists api_test_userprofile;                |
+			| drop table if exists api_test_visitorsrecord;             |
+			| drop table if exists auth_group;                          |
+			| drop table if exists auth_group_permissions;              |
+			| drop table if exists auth_permission;                     |
+			| drop table if exists auth_user;                           |
+			| drop table if exists auth_user_groups;                    |
+			| drop table if exists auth_user_user_permissions;          |
+			| drop table if exists authtoken_token;                     |
+			| drop table if exists django_admin_log;                    |
+			| drop table if exists django_content_type;                 |
+			| drop table if exists django_migrations;                   |
+			| drop table if exists django_session;                      |
+			+-----------------------------------------------------------+
+			38 rows in set (0.00 sec)
+
+8. 创建超级用户，用于登录后台管理: qiaosong/qiaosong
+	api_automation_test-master> python3 manage.py createsuperuser
+		Username (leave blank to use 'qiaosong'):
+		Email address:
+		Password:
+		Password (again):
+		This password is too short. It must contain at least 8 characters.
+		This password is too common.
+		This password is entirely numeric.
+		Password:
+		Password (again):
+		Superuser created successfully.
+
+9. 安装VUE环境，下载node.js并配置环境，下载npm包管理器
+	api_automation_test-master> brew install node
+		Updating Homebrew...
+		==> Auto-updated Homebrew!
+		Updated 2 taps (homebrew/core and homebrew/cask).
+		==> New Formulae
+		ahoy                           entityx                        gerbil-scheme                  opencv@3                       tmx
+		==> Updated Formulae
+		ansible        carla          embulk         gearman        jenkins        mas            mpv            scrcpy         swiftformat    webp
+		audacious      checkbashisms  eslint         geoipupdate    lean           mongodb        node           scummvm        swiftlint      wtf
+		bettercap      cp2k           fauna-shell    gnome-recipes  libgpg-error   mongodb@3.6    open-babel     sile           typescript     yara
+		bower          cython         fluid-synth    hub            libuv          mpd            quicktype      spdlog         urbit          zabbix
+		buku           dosbox-x       fonttools      imagemagick    libxc          mps-youtube    rdfind         sphinx         vips           zeromq
+		==> Deleted Formulae
+		apache-arrow                                        apache-arrow-glib                                   cputhrottle
+
+		Error: The following directories are not writable by your user:
+		/usr/local/share/man/man8
+
+		You should change the ownership of these directories to your user.
+		  sudo chown -R $(whoami) /usr/local/share/man/man8
+	➜  man> whoami
+		qiaosong
+	➜  man> sudo chown -R qiaosong /usr/local/share/man/man8
+	➜  man> ll /usr/local/share/man/man8
+			total 0
+			lrwxr-xr-x  1 qiaosong  admin   147B  1  4 14:48 prl_convert.8 -> /Applications/Parallels Desktop.app/Contents/Frameworks/ParallelsVirtualizationSDK.framework/Versions/Current/Resources/English.lproj/prl_convert.8
+			lrwxr-xr-x  1 qiaosong  admin   149B  1  4 14:48 prl_disk_tool.8 -> /Applications/Parallels Desktop.app/Contents/Frameworks/ParallelsVirtualizationSDK.framework/Versions/Current/Resources/English.lproj/prl_disk_tool.8
+			lrwxr-xr-x  1 qiaosong  admin   142B  1  4 14:48 prlctl.8 -> /Applications/Parallels Desktop.app/Contents/Frameworks/ParallelsVirtualizationSDK.framework/Versions/Current/Resources/English.lproj/prlctl.8
+			lrwxr-xr-x  1 qiaosong  admin   143B  1  4 14:48 prlexec.8 -> /Applications/Parallels Desktop.app/Contents/Frameworks/ParallelsVirtualizationSDK.framework/Versions/Current/Resources/English.lproj/prlexec.8
+			lrwxr-xr-x  1 qiaosong  admin   145B  1  4 14:48 prlsrvctl.8 -> /Applications/Parallels Desktop.app/Contents/Frameworks/ParallelsVirtualizationSDK.framework/Versions/Current/Resources/English.lproj/prlsrvctl.8
+	➜  man> brew install node
+			==> Installing dependencies for node: icu4c
+			==> Installing node dependency: icu4c
+			==> Downloading https://homebrew.bintray.com/bottles/icu4c-63.1.high_sierra.bottle.tar.gz
+			######################################################################## 100.0%
+			==> Pouring icu4c-63.1.high_sierra.bottle.tar.gz
+			==> Caveats
+			icu4c is keg-only, which means it was not symlinked into /usr/local,
+			because macOS provides libicucore.dylib (but nothing else).
+
+			If you need to have icu4c first in your PATH run:
+			  echo 'export PATH="/usr/local/opt/icu4c/bin:$PATH"' >> ~/.zshrc
+			  echo 'export PATH="/usr/local/opt/icu4c/sbin:$PATH"' >> ~/.zshrc
+
+			For compilers to find icu4c you may need to set:
+			  export LDFLAGS="-L/usr/local/opt/icu4c/lib"
+			  export CPPFLAGS="-I/usr/local/opt/icu4c/include"
+
+			==> Summary
+			🍺  /usr/local/Cellar/icu4c/63.1: 254 files, 68.4MB
+			==> Installing node
+			==> Downloading https://homebrew.bintray.com/bottles/node-11.7.0.high_sierra.bottle.tar.gz
+			######################################################################## 100.0%
+			==> Pouring node-11.7.0.high_sierra.bottle.tar.gz
+			==> Caveats
+			Bash completion has been installed to:
+			  /usr/local/etc/bash_completion.d
+			==> Summary
+			🍺  /usr/local/Cellar/node/11.7.0: 3,938 files, 47.4MB
+			==> Caveats
+			==> icu4c
+			icu4c is keg-only, which means it was not symlinked into /usr/local,
+			because macOS provides libicucore.dylib (but nothing else).
+
+			If you need to have icu4c first in your PATH run:
+			  echo 'export PATH="/usr/local/opt/icu4c/bin:$PATH"' >> ~/.zshrc
+			  echo 'export PATH="/usr/local/opt/icu4c/sbin:$PATH"' >> ~/.zshrc
+
+			For compilers to find icu4c you may need to set:
+			  export LDFLAGS="-L/usr/local/opt/icu4c/lib"
+			  export CPPFLAGS="-I/usr/local/opt/icu4c/include"
+
+			==> node
+			Bash completion has been installed to:
+			  /usr/local/etc/bash_completion.d
+	➜man> node -v
+		v11.7.0
+
+    man> npm install webpack -g
+		/usr/local/bin/webpack -> /usr/local/lib/node_modules/webpack/bin/webpack.js
+
+		> fsevents@1.2.7 install /usr/local/lib/node_modules/webpack/node_modules/fsevents
+		> node install
+
+		node-pre-gyp WARN Using needle for node-pre-gyp https download
+		[fsevents] Success: "/usr/local/lib/node_modules/webpack/node_modules/fsevents/lib/binding/Release/node-v67-darwin-x64/fse.node" is installed via remote
+		+ webpack@4.29.0
+		added 389 packages from 219 contributors in 45.928s
+	➜man> npm install vue-cli -g
+		npm WARN deprecated coffee-script@1.12.7: CoffeeScript on NPM has moved to "coffeescript" (no hyphen)
+		/usr/local/bin/vue -> /usr/local/lib/node_modules/vue-cli/bin/vue
+		/usr/local/bin/vue-init -> /usr/local/lib/node_modules/vue-cli/bin/vue-init
+		/usr/local/bin/vue-list -> /usr/local/lib/node_modules/vue-cli/bin/vue-list
+		+ vue-cli@2.9.6
+		added 239 packages from 206 contributors in 31.47s
+
+10. cmd进入frontend目录下，运行npm install安装相关依赖包: npm install
+	➜  frontend> npm install
+		> chromedriver@2.45.0 install /workspace/softwares/api_automation_test-master/frontend/node_modules/chromedriver
+		> node install.js
+		Current existing ChromeDriver binary is unavailable, proceding with download and extraction.
+		Downloading from file:  https://chromedriver.storage.googleapis.com/2.45/chromedriver_mac64.zip
+		Saving to file: /var/folders/0y/hz4_nlm9149b34rgbrfj38t80000gp/T/chromedriver/chromedriver_mac64.zip
+		ChromeDriver installation failed Error with http(s) request: Error: read ETIMEDOUT
+		npm WARN ajv-keywords@2.1.1 requires a peer of ajv@^5.0.0 but none is installed. You must install peer dependencies yourself.
+		npm WARN webpack-dev-middleware@3.4.0 requires a peer of webpack@^4.0.0 but none is installed. You must install peer dependencies yourself.
+		npm WARN webpack-dev-server@3.1.14 requires a peer of webpack@^4.0.0 but none is installed. You must install peer dependencies yourself.
+		npm ERR! code ELIFECYCLE
+		npm ERR! errno 1
+		npm ERR! chromedriver@2.45.0 install: `node install.js`
+		npm ERR! Exit status 1
+		npm ERR!
+		npm ERR! Failed at the chromedriver@2.45.0 install script.
+		npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+		npm ERR! A complete log of this run can be found in:
+		npm ERR!     /Users/qiaosong/.npm/_logs/2019-01-21T03_48_09_384Z-debug.log
+							315 silly saveTree     └─┬ yargs-parser@7.0.0
+							315 silly saveTree       └── camelcase@4.1.0
+							316 warn ajv-keywords@2.1.1 requires a peer of ajv@^5.0.0 but none is installed. You must install peer dependencies yourself.
+							317 warn webpack-dev-middleware@3.4.0 requires a peer of webpack@^4.0.0 but none is installed. You must install peer dependencies yourself.
+							318 warn webpack-dev-server@3.1.14 requires a peer of webpack@^4.0.0 but none is installed. You must install peer dependencies yourself.
+							319 verbose stack Error: chromedriver@2.45.0 install: `node install.js`
+							319 verbose stack Exit status 1
+							319 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/index.js:301:16)
+							319 verbose stack     at EventEmitter.emit (events.js:188:13)
+							319 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/lib/spawn.js:55:14)
+							319 verbose stack     at ChildProcess.emit (events.js:188:13)
+							319 verbose stack     at maybeClose (internal/child_process.js:978:16)
+							319 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:265:5)
+							320 verbose pkgid chromedriver@2.45.0
+							321 verbose cwd /workspace/softwares/api_automation_test-master/frontend
+							322 verbose Darwin 17.7.0
+							323 verbose argv "/usr/local/Cellar/node/11.7.0/bin/node" "/usr/local/bin/npm" "install"
+							324 verbose node v11.7.0
+							325 verbose npm  v6.5.0
+							326 error code ELIFECYCLE
+							327 error errno 1
+							328 error chromedriver@2.45.0 install: `node install.js`
+							328 error Exit status 1
+							329 error Failed at the chromedriver@2.45.0 install script.
+							329 error This is probably not a problem with npm. There is likely additional logging output above.
+							330 verbose exit [ 1, true ]
+
+11. npm run build
+➜  frontend> npm run build
+> frontend@1.0.0 build /workspace/softwares/api_automation_test-master/frontend
+> node build/build.js
+
+Hash: 21d372e05d723f00bc5b
+Version: webpack 3.12.0
+Time: 29623ms
+                                     Asset       Size  Chunks                    Chunk Names
+          static/img/userphoto.6d73d26.jpg    13.5 kB          [emitted]
+            static/img/page1_3.17bc0b8.jpg    41.4 kB          [emitted]
+       static/js/0.c23a9b08b78da5a41774.js     797 kB       0  [emitted]  [big]
+       static/js/1.d51e11692e9bd4e8af47.js     364 kB       1  [emitted]  [big]
+       static/js/2.b7ac5242ec83911d8228.js     371 kB       2  [emitted]  [big]
+       static/js/3.b9807efe50d61d2f7ed8.js     362 kB       3  [emitted]  [big]
+       static/js/4.0e03e7f99d989ac278d7.js     166 kB       4  [emitted]
+       static/js/5.a5b2cef5dd012d5676f0.js     150 kB       5  [emitted]
+       static/js/6.dd3dc416f130f78b37bf.js    61.5 kB       6  [emitted]
+       static/js/7.567871aaeea799c4b382.js     143 kB       7  [emitted]
+       static/js/8.ddcc17fec74b123669b2.js    38.9 kB       8  [emitted]
+       static/js/9.14f6fc95c8a26ed23d13.js    38.1 kB       9  [emitted]
+      static/js/10.23b433ed2136cbb4e2cf.js    47.5 kB      10  [emitted]
+      static/js/11.099d6eb610c135e52f4d.js     128 kB      11  [emitted]
+      static/js/12.b25bc079dff74c310d91.js     127 kB      12  [emitted]
+      static/js/13.35bd982636a61f824f39.js     113 kB      13  [emitted]
+      static/js/14.ed010f7a25efa99a327f.js     116 kB      14  [emitted]
+      static/js/15.2fd12c91d574bcc95cdf.js     117 kB      15  [emitted]
+      static/js/16.b6a511a9daadcc97840d.js     119 kB      16  [emitted]
+      static/js/17.2b55d14c2e815de5b8b9.js     123 kB      17  [emitted]
+      static/js/18.902e7bae99ac78449016.js     114 kB      18  [emitted]
+      static/js/19.2b0c8700f81a6620861e.js     109 kB      19  [emitted]
+      static/js/20.1c67a1d6163218d93b24.js    34.8 kB      20  [emitted]
+      static/js/21.228ba1f21ff20da7c243.js    27.9 kB      21  [emitted]
+      static/js/22.1633010d0ca0abab368e.js    26.8 kB      22  [emitted]
+      static/js/23.2ce69fc2512edeff75a5.js    22.2 kB      23  [emitted]
+      static/js/24.a37bdca4c1ca97e3c7c2.js    5.17 kB      24  [emitted]
+      static/js/25.ced5c0a4bf5dcb0a3190.js    5.15 kB      25  [emitted]
+      static/js/26.fb78376cb0ef283d8535.js    2.16 kB      26  [emitted]
+      static/js/27.5fdd4439965cf7828b1c.js  328 bytes      27  [emitted]
+     static/js/app.48aab2f84d710c50293a.js    9.02 kB      28  [emitted]         app
+  static/js/vendor.4322a0d4d2a17bf2349d.js    3.35 kB      29  [emitted]         vendor
+static/js/manifest.a1f86835bbc18fd4f861.js     2.1 kB      30  [emitted]         manifest
+                                index.html    1.33 kB          [emitted]
+
+ERROR in ./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-c4da777a","scoped":false,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/App.vue
+Module build failed: Error: ENOENT: no such file or directory, scandir '/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/vendor'
+    at Object.readdirSync (fs.js:807:3)
+    at Object.getInstalledBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/extensions.js:130:13)
+    at foundBinariesList (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:20:15)
+    at foundBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:15:5)
+    at Object.module.exports.missingBinary (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:45:5)
+    at module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/binding.js:15:30)
+    at Object.<anonymous> (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (internal/modules/cjs/loader.js:721:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:552:3)
+    at Module.require (internal/modules/cjs/loader.js:657:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.sassLoader (/workspace/softwares/api_automation_test-master/frontend/node_modules/sass-loader/lib/loader.js:46:72)
+ @ ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-c4da777a","scoped":false,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/App.vue 4:14-379
+ @ ./src/App.vue
+ @ ./src/main.js
+
+ERROR in ./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-500188fa","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/Home.vue
+Module build failed: Error: ENOENT: no such file or directory, scandir '/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/vendor'
+    at Object.readdirSync (fs.js:807:3)
+    at Object.getInstalledBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/extensions.js:130:13)
+    at foundBinariesList (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:20:15)
+    at foundBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:15:5)
+    at Object.module.exports.missingBinary (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:45:5)
+    at module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/binding.js:15:30)
+    at Object.<anonymous> (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (internal/modules/cjs/loader.js:721:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:552:3)
+    at Module.require (internal/modules/cjs/loader.js:657:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.sassLoader (/workspace/softwares/api_automation_test-master/frontend/node_modules/sass-loader/lib/loader.js:46:72)
+ @ ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-500188fa","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/Home.vue 4:14-391
+ @ ./src/views/Home.vue
+ @ ./src/routes.js
+ @ ./src/main.js
+
+ERROR in ./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-4d5c9360","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/Project.vue
+Module build failed: Error: ENOENT: no such file or directory, scandir '/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/vendor'
+    at Object.readdirSync (fs.js:807:3)
+    at Object.getInstalledBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/extensions.js:130:13)
+    at foundBinariesList (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:20:15)
+    at foundBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:15:5)
+    at Object.module.exports.missingBinary (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:45:5)
+    at module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/binding.js:15:30)
+    at Object.<anonymous> (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (internal/modules/cjs/loader.js:721:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:552:3)
+    at Module.require (internal/modules/cjs/loader.js:657:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.sassLoader (/workspace/softwares/api_automation_test-master/frontend/node_modules/sass-loader/lib/loader.js:46:72)
+ @ ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-4d5c9360","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/Project.vue 4:14-394
+ @ ./src/views/Project.vue
+ @ ./src/routes.js
+ @ ./src/main.js
+
+ERROR in ./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-352b0fe2","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/common/404.vue
+Module build failed: Error: ENOENT: no such file or directory, scandir '/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/vendor'
+    at Object.readdirSync (fs.js:807:3)
+    at Object.getInstalledBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/extensions.js:130:13)
+    at foundBinariesList (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:20:15)
+    at foundBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:15:5)
+    at Object.module.exports.missingBinary (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:45:5)
+    at module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/binding.js:15:30)
+    at Object.<anonymous> (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (internal/modules/cjs/loader.js:721:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:552:3)
+    at Module.require (internal/modules/cjs/loader.js:657:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.sassLoader (/workspace/softwares/api_automation_test-master/frontend/node_modules/sass-loader/lib/loader.js:46:72)
+ @ ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-352b0fe2","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/common/404.vue 4:14-402
+ @ ./src/views/common/404.vue
+ @ ./src/routes.js
+ @ ./src/main.js
+
+ERROR in ./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-af1638d6","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/ProjectDynamic.vue
+Module build failed: Error: ENOENT: no such file or directory, scandir '/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/vendor'
+    at Object.readdirSync (fs.js:807:3)
+    at Object.getInstalledBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/extensions.js:130:13)
+    at foundBinariesList (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:20:15)
+    at foundBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:15:5)
+    at Object.module.exports.missingBinary (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:45:5)
+    at module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/binding.js:15:30)
+    at Object.<anonymous> (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (internal/modules/cjs/loader.js:721:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:552:3)
+    at Module.require (internal/modules/cjs/loader.js:657:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.sassLoader (/workspace/softwares/api_automation_test-master/frontend/node_modules/sass-loader/lib/loader.js:46:72)
+ @ ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-af1638d6","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/ProjectDynamic.vue 4:14-413
+ @ ./src/views/project/ProjectDynamic.vue
+ @ ./src/routes.js
+ @ ./src/main.js
+
+ERROR in ./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-602f07ed","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/api/updateApi/ApiForm.vue
+Module build failed: Error: ENOENT: no such file or directory, scandir '/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/vendor'
+    at Object.readdirSync (fs.js:807:3)
+    at Object.getInstalledBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/extensions.js:130:13)
+    at foundBinariesList (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:20:15)
+    at foundBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:15:5)
+    at Object.module.exports.missingBinary (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:45:5)
+    at module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/binding.js:15:30)
+    at Object.<anonymous> (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (internal/modules/cjs/loader.js:721:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:552:3)
+    at Module.require (internal/modules/cjs/loader.js:657:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.sassLoader (/workspace/softwares/api_automation_test-master/frontend/node_modules/sass-loader/lib/loader.js:46:72)
+ @ ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-602f07ed","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/api/updateApi/ApiForm.vue 4:14-430
+ @ ./src/views/project/api/updateApi/ApiForm.vue
+ @ ./src/routes.js
+ @ ./src/main.js
+
+ERROR in ./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-0d1ed23c","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/automation/CaseListGroup.vue
+Module build failed: Error: ENOENT: no such file or directory, scandir '/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/vendor'
+    at Object.readdirSync (fs.js:807:3)
+    at Object.getInstalledBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/extensions.js:130:13)
+    at foundBinariesList (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:20:15)
+    at foundBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:15:5)
+    at Object.module.exports.missingBinary (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:45:5)
+    at module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/binding.js:15:30)
+    at Object.<anonymous> (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (internal/modules/cjs/loader.js:721:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:552:3)
+    at Module.require (internal/modules/cjs/loader.js:657:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.sassLoader (/workspace/softwares/api_automation_test-master/frontend/node_modules/sass-loader/lib/loader.js:46:72)
+ @ ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-0d1ed23c","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/automation/CaseListGroup.vue 4:14-424
+ @ ./src/views/project/automation/CaseListGroup.vue
+ @ ./src/routes.js
+ @ ./src/main.js
+
+ERROR in ./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-848c779e","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/automation/UpdateCaseApi.vue
+Module build failed: Error: ENOENT: no such file or directory, scandir '/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/vendor'
+    at Object.readdirSync (fs.js:807:3)
+    at Object.getInstalledBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/extensions.js:130:13)
+    at foundBinariesList (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:20:15)
+    at foundBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:15:5)
+    at Object.module.exports.missingBinary (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:45:5)
+    at module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/binding.js:15:30)
+    at Object.<anonymous> (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (internal/modules/cjs/loader.js:721:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:552:3)
+    at Module.require (internal/modules/cjs/loader.js:657:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.sassLoader (/workspace/softwares/api_automation_test-master/frontend/node_modules/sass-loader/lib/loader.js:46:72)
+ @ ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-848c779e","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/automation/UpdateCaseApi.vue 4:14-424
+ @ ./src/views/project/automation/UpdateCaseApi.vue
+ @ ./src/routes.js
+ @ ./src/main.js
+
+ERROR in ./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-848c779e","scoped":false,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=1!./src/views/project/automation/UpdateCaseApi.vue
+Module build failed: Error: ENOENT: no such file or directory, scandir '/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/vendor'
+    at Object.readdirSync (fs.js:807:3)
+    at Object.getInstalledBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/extensions.js:130:13)
+    at foundBinariesList (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:20:15)
+    at foundBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:15:5)
+    at Object.module.exports.missingBinary (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:45:5)
+    at module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/binding.js:15:30)
+    at Object.<anonymous> (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (internal/modules/cjs/loader.js:721:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:552:3)
+    at Module.require (internal/modules/cjs/loader.js:657:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.sassLoader (/workspace/softwares/api_automation_test-master/frontend/node_modules/sass-loader/lib/loader.js:46:72)
+ @ ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-848c779e","scoped":false,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=1!./src/views/project/automation/UpdateCaseApi.vue 4:14-425
+ @ ./src/views/project/automation/UpdateCaseApi.vue
+ @ ./src/routes.js
+ @ ./src/main.js
+
+ERROR in ./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-c2206b4a","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/api/Addapi.vue
+Module build failed: Error: ENOENT: no such file or directory, scandir '/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/vendor'
+    at Object.readdirSync (fs.js:807:3)
+    at Object.getInstalledBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/extensions.js:130:13)
+    at foundBinariesList (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:20:15)
+    at foundBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:15:5)
+    at Object.module.exports.missingBinary (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:45:5)
+    at module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/binding.js:15:30)
+    at Object.<anonymous> (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (internal/modules/cjs/loader.js:721:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:552:3)
+    at Module.require (internal/modules/cjs/loader.js:657:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.sassLoader (/workspace/softwares/api_automation_test-master/frontend/node_modules/sass-loader/lib/loader.js:46:72)
+ @ ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-c2206b4a","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/api/Addapi.vue 4:14-417
+ @ ./src/views/project/api/Addapi.vue
+ @ ./src/routes.js
+ @ ./src/main.js
+
+ERROR in ./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-c2206b4a","scoped":false,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=1!./src/views/project/api/Addapi.vue
+Module build failed: Error: ENOENT: no such file or directory, scandir '/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/vendor'
+    at Object.readdirSync (fs.js:807:3)
+    at Object.getInstalledBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/extensions.js:130:13)
+    at foundBinariesList (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:20:15)
+    at foundBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:15:5)
+    at Object.module.exports.missingBinary (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:45:5)
+    at module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/binding.js:15:30)
+    at Object.<anonymous> (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (internal/modules/cjs/loader.js:721:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:552:3)
+    at Module.require (internal/modules/cjs/loader.js:657:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.sassLoader (/workspace/softwares/api_automation_test-master/frontend/node_modules/sass-loader/lib/loader.js:46:72)
+ @ ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-c2206b4a","scoped":false,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=1!./src/views/project/api/Addapi.vue 4:14-418
+ @ ./src/views/project/api/Addapi.vue
+ @ ./src/routes.js
+ @ ./src/main.js
+
+ERROR in ./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-679223b6","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/automation/CaseList.vue
+Module build failed: Error: ENOENT: no such file or directory, scandir '/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/vendor'
+    at Object.readdirSync (fs.js:807:3)
+    at Object.getInstalledBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/extensions.js:130:13)
+    at foundBinariesList (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:20:15)
+    at foundBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:15:5)
+    at Object.module.exports.missingBinary (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:45:5)
+    at module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/binding.js:15:30)
+    at Object.<anonymous> (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (internal/modules/cjs/loader.js:721:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:552:3)
+    at Module.require (internal/modules/cjs/loader.js:657:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.sassLoader (/workspace/softwares/api_automation_test-master/frontend/node_modules/sass-loader/lib/loader.js:46:72)
+ @ ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-679223b6","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/automation/CaseList.vue 4:14-419
+ @ ./src/views/project/automation/CaseList.vue
+ @ ./src/routes.js
+ @ ./src/main.js
+
+ERROR in ./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-50a5f720","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/automation/CaseApiList.vue
+Module build failed: Error: ENOENT: no such file or directory, scandir '/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/vendor'
+    at Object.readdirSync (fs.js:807:3)
+    at Object.getInstalledBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/extensions.js:130:13)
+    at foundBinariesList (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:20:15)
+    at foundBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:15:5)
+    at Object.module.exports.missingBinary (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:45:5)
+    at module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/binding.js:15:30)
+    at Object.<anonymous> (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (internal/modules/cjs/loader.js:721:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:552:3)
+    at Module.require (internal/modules/cjs/loader.js:657:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.sassLoader (/workspace/softwares/api_automation_test-master/frontend/node_modules/sass-loader/lib/loader.js:46:72)
+ @ ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-50a5f720","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/automation/CaseApiList.vue 4:14-422
+ @ ./src/views/project/automation/CaseApiList.vue
+ @ ./src/routes.js
+ @ ./src/main.js
+
+ERROR in ./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-5d800cb4","scoped":false,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=1!./src/views/project/automation/AddCaseApi.vue
+Module build failed: Error: ENOENT: no such file or directory, scandir '/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/vendor'
+    at Object.readdirSync (fs.js:807:3)
+    at Object.getInstalledBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/extensions.js:130:13)
+    at foundBinariesList (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:20:15)
+    at foundBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:15:5)
+    at Object.module.exports.missingBinary (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:45:5)
+    at module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/binding.js:15:30)
+    at Object.<anonymous> (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (internal/modules/cjs/loader.js:721:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:552:3)
+    at Module.require (internal/modules/cjs/loader.js:657:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.sassLoader (/workspace/softwares/api_automation_test-master/frontend/node_modules/sass-loader/lib/loader.js:46:72)
+ @ ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-5d800cb4","scoped":false,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=1!./src/views/project/automation/AddCaseApi.vue 4:14-422
+ @ ./src/views/project/automation/AddCaseApi.vue
+ @ ./src/routes.js
+ @ ./src/main.js
+
+ERROR in ./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-3132daab","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/api/updateApi/UpdateApi.vue
+Module build failed: Error: ENOENT: no such file or directory, scandir '/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/vendor'
+    at Object.readdirSync (fs.js:807:3)
+    at Object.getInstalledBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/extensions.js:130:13)
+    at foundBinariesList (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:20:15)
+    at foundBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:15:5)
+    at Object.module.exports.missingBinary (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:45:5)
+    at module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/binding.js:15:30)
+    at Object.<anonymous> (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (internal/modules/cjs/loader.js:721:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:552:3)
+    at Module.require (internal/modules/cjs/loader.js:657:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.sassLoader (/workspace/softwares/api_automation_test-master/frontend/node_modules/sass-loader/lib/loader.js:46:72)
+ @ ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-3132daab","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/api/updateApi/UpdateApi.vue 4:14-432
+ @ ./src/views/project/api/updateApi/UpdateApi.vue
+ @ ./src/routes.js
+ @ ./src/main.js
+
+ERROR in ./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-3132daab","scoped":false,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=1!./src/views/project/api/updateApi/UpdateApi.vue
+Module build failed: Error: ENOENT: no such file or directory, scandir '/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/vendor'
+    at Object.readdirSync (fs.js:807:3)
+    at Object.getInstalledBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/extensions.js:130:13)
+    at foundBinariesList (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:20:15)
+    at foundBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:15:5)
+    at Object.module.exports.missingBinary (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:45:5)
+    at module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/binding.js:15:30)
+    at Object.<anonymous> (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (internal/modules/cjs/loader.js:721:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:552:3)
+    at Module.require (internal/modules/cjs/loader.js:657:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.sassLoader (/workspace/softwares/api_automation_test-master/frontend/node_modules/sass-loader/lib/loader.js:46:72)
+ @ ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-3132daab","scoped":false,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=1!./src/views/project/api/updateApi/UpdateApi.vue 4:14-433
+ @ ./src/views/project/api/updateApi/UpdateApi.vue
+ @ ./src/routes.js
+ @ ./src/main.js
+
+ERROR in ./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-5d800cb4","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/automation/AddCaseApi.vue
+Module build failed: Error: ENOENT: no such file or directory, scandir '/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/vendor'
+    at Object.readdirSync (fs.js:807:3)
+    at Object.getInstalledBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/extensions.js:130:13)
+    at foundBinariesList (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:20:15)
+    at foundBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:15:5)
+    at Object.module.exports.missingBinary (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:45:5)
+    at module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/binding.js:15:30)
+    at Object.<anonymous> (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (internal/modules/cjs/loader.js:721:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:552:3)
+    at Module.require (internal/modules/cjs/loader.js:657:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.sassLoader (/workspace/softwares/api_automation_test-master/frontend/node_modules/sass-loader/lib/loader.js:46:72)
+ @ ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-5d800cb4","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/automation/AddCaseApi.vue 4:14-421
+ @ ./src/views/project/automation/AddCaseApi.vue
+ @ ./src/routes.js
+ @ ./src/main.js
+
+ERROR in ./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-c29e8f56","scoped":false,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=1!./src/views/project/api/updateApi/TestApi.vue
+Module build failed: Error: ENOENT: no such file or directory, scandir '/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/vendor'
+    at Object.readdirSync (fs.js:807:3)
+    at Object.getInstalledBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/extensions.js:130:13)
+    at foundBinariesList (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:20:15)
+    at foundBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:15:5)
+    at Object.module.exports.missingBinary (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:45:5)
+    at module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/binding.js:15:30)
+    at Object.<anonymous> (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (internal/modules/cjs/loader.js:721:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:552:3)
+    at Module.require (internal/modules/cjs/loader.js:657:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.sassLoader (/workspace/softwares/api_automation_test-master/frontend/node_modules/sass-loader/lib/loader.js:46:72)
+ @ ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-c29e8f56","scoped":false,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=1!./src/views/project/api/updateApi/TestApi.vue 4:14-431
+ @ ./src/views/project/api/updateApi/TestApi.vue
+ @ ./src/routes.js
+ @ ./src/main.js
+
+ERROR in ./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-c29e8f56","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/api/updateApi/TestApi.vue
+Module build failed: Error: ENOENT: no such file or directory, scandir '/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/vendor'
+    at Object.readdirSync (fs.js:807:3)
+    at Object.getInstalledBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/extensions.js:130:13)
+    at foundBinariesList (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:20:15)
+    at foundBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:15:5)
+    at Object.module.exports.missingBinary (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:45:5)
+    at module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/binding.js:15:30)
+    at Object.<anonymous> (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (internal/modules/cjs/loader.js:721:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:552:3)
+    at Module.require (internal/modules/cjs/loader.js:657:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.sassLoader (/workspace/softwares/api_automation_test-master/frontend/node_modules/sass-loader/lib/loader.js:46:72)
+ @ ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-c29e8f56","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/api/updateApi/TestApi.vue 4:14-430
+ @ ./src/views/project/api/updateApi/TestApi.vue
+ @ ./src/routes.js
+ @ ./src/main.js
+
+ERROR in ./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-18983564","scoped":false,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=1!./src/views/project/api/FestTest.vue
+Module build failed: Error: ENOENT: no such file or directory, scandir '/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/vendor'
+    at Object.readdirSync (fs.js:807:3)
+    at Object.getInstalledBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/extensions.js:130:13)
+    at foundBinariesList (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:20:15)
+    at foundBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:15:5)
+    at Object.module.exports.missingBinary (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:45:5)
+    at module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/binding.js:15:30)
+    at Object.<anonymous> (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (internal/modules/cjs/loader.js:721:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:552:3)
+    at Module.require (internal/modules/cjs/loader.js:657:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.sassLoader (/workspace/softwares/api_automation_test-master/frontend/node_modules/sass-loader/lib/loader.js:46:72)
+ @ ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-18983564","scoped":false,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=1!./src/views/project/api/FestTest.vue 4:14-420
+ @ ./src/views/project/api/FestTest.vue
+ @ ./src/routes.js
+ @ ./src/main.js
+
+ERROR in ./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-18983564","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/api/FestTest.vue
+Module build failed: Error: ENOENT: no such file or directory, scandir '/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/vendor'
+    at Object.readdirSync (fs.js:807:3)
+    at Object.getInstalledBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/extensions.js:130:13)
+    at foundBinariesList (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:20:15)
+    at foundBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:15:5)
+    at Object.module.exports.missingBinary (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:45:5)
+    at module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/binding.js:15:30)
+    at Object.<anonymous> (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (internal/modules/cjs/loader.js:721:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:552:3)
+    at Module.require (internal/modules/cjs/loader.js:657:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.sassLoader (/workspace/softwares/api_automation_test-master/frontend/node_modules/sass-loader/lib/loader.js:46:72)
+ @ ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-18983564","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/api/FestTest.vue 4:14-419
+ @ ./src/views/project/api/FestTest.vue
+ @ ./src/routes.js
+ @ ./src/main.js
+
+ERROR in ./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-33d9e765","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/api/ApiList.vue
+Module build failed: Error: ENOENT: no such file or directory, scandir '/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/vendor'
+    at Object.readdirSync (fs.js:807:3)
+    at Object.getInstalledBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/extensions.js:130:13)
+    at foundBinariesList (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:20:15)
+    at foundBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:15:5)
+    at Object.module.exports.missingBinary (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:45:5)
+    at module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/binding.js:15:30)
+    at Object.<anonymous> (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (internal/modules/cjs/loader.js:721:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:552:3)
+    at Module.require (internal/modules/cjs/loader.js:657:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.sassLoader (/workspace/softwares/api_automation_test-master/frontend/node_modules/sass-loader/lib/loader.js:46:72)
+ @ ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-33d9e765","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/api/ApiList.vue 4:14-418
+ @ ./src/views/project/api/ApiList.vue
+ @ ./src/routes.js
+ @ ./src/main.js
+
+ERROR in ./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-23c7c9f5","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/automation/AutomationTest.vue
+Module build failed: Error: ENOENT: no such file or directory, scandir '/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/vendor'
+    at Object.readdirSync (fs.js:807:3)
+    at Object.getInstalledBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/extensions.js:130:13)
+    at foundBinariesList (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:20:15)
+    at foundBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:15:5)
+    at Object.module.exports.missingBinary (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:45:5)
+    at module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/binding.js:15:30)
+    at Object.<anonymous> (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (internal/modules/cjs/loader.js:721:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:552:3)
+    at Module.require (internal/modules/cjs/loader.js:657:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.sassLoader (/workspace/softwares/api_automation_test-master/frontend/node_modules/sass-loader/lib/loader.js:46:72)
+ @ ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-23c7c9f5","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/automation/AutomationTest.vue 4:14-425
+ @ ./src/views/project/automation/AutomationTest.vue
+ @ ./src/routes.js
+ @ ./src/main.js
+
+ERROR in ./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-3759071e","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/api/updateApi/ApiInfo.vue
+Module build failed: Error: ENOENT: no such file or directory, scandir '/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/vendor'
+    at Object.readdirSync (fs.js:807:3)
+    at Object.getInstalledBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/extensions.js:130:13)
+    at foundBinariesList (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:20:15)
+    at foundBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:15:5)
+    at Object.module.exports.missingBinary (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:45:5)
+    at module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/binding.js:15:30)
+    at Object.<anonymous> (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (internal/modules/cjs/loader.js:721:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:552:3)
+    at Module.require (internal/modules/cjs/loader.js:657:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.sassLoader (/workspace/softwares/api_automation_test-master/frontend/node_modules/sass-loader/lib/loader.js:46:72)
+ @ ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-3759071e","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/api/updateApi/ApiInfo.vue 4:14-430
+ @ ./src/views/project/api/updateApi/ApiInfo.vue
+ @ ./src/routes.js
+ @ ./src/main.js
+
+ERROR in ./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-3924f0ce","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/api/ApiListGroup.vue
+Module build failed: Error: ENOENT: no such file or directory, scandir '/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/vendor'
+    at Object.readdirSync (fs.js:807:3)
+    at Object.getInstalledBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/extensions.js:130:13)
+    at foundBinariesList (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:20:15)
+    at foundBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:15:5)
+    at Object.module.exports.missingBinary (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:45:5)
+    at module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/binding.js:15:30)
+    at Object.<anonymous> (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (internal/modules/cjs/loader.js:721:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:552:3)
+    at Module.require (internal/modules/cjs/loader.js:657:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.sassLoader (/workspace/softwares/api_automation_test-master/frontend/node_modules/sass-loader/lib/loader.js:46:72)
+ @ ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-3924f0ce","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/api/ApiListGroup.vue 4:14-423
+ @ ./src/views/project/api/ApiListGroup.vue
+ @ ./src/routes.js
+ @ ./src/main.js
+
+ERROR in ./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-e38878fa","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/ProjectMember.vue
+Module build failed: Error: ENOENT: no such file or directory, scandir '/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/vendor'
+    at Object.readdirSync (fs.js:807:3)
+    at Object.getInstalledBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/extensions.js:130:13)
+    at foundBinariesList (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:20:15)
+    at foundBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:15:5)
+    at Object.module.exports.missingBinary (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:45:5)
+    at module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/binding.js:15:30)
+    at Object.<anonymous> (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (internal/modules/cjs/loader.js:721:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:552:3)
+    at Module.require (internal/modules/cjs/loader.js:657:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.sassLoader (/workspace/softwares/api_automation_test-master/frontend/node_modules/sass-loader/lib/loader.js:46:72)
+ @ ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-e38878fa","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/ProjectMember.vue 4:14-412
+ @ ./src/views/project/ProjectMember.vue
+ @ ./src/routes.js
+ @ ./src/main.js
+
+ERROR in ./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-0853e244","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/api/API.vue
+Module build failed: Error: ENOENT: no such file or directory, scandir '/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/vendor'
+    at Object.readdirSync (fs.js:807:3)
+    at Object.getInstalledBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/extensions.js:130:13)
+    at foundBinariesList (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:20:15)
+    at foundBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:15:5)
+    at Object.module.exports.missingBinary (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:45:5)
+    at module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/binding.js:15:30)
+    at Object.<anonymous> (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (internal/modules/cjs/loader.js:721:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:552:3)
+    at Module.require (internal/modules/cjs/loader.js:657:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.sassLoader (/workspace/softwares/api_automation_test-master/frontend/node_modules/sass-loader/lib/loader.js:46:72)
+ @ ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-0853e244","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/api/API.vue 4:14-414
+ @ ./src/views/project/api/API.vue
+ @ ./src/routes.js
+ @ ./src/main.js
+
+ERROR in ./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-33cf009a","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/common/Login.vue
+Module build failed: Error: ENOENT: no such file or directory, scandir '/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/vendor'
+    at Object.readdirSync (fs.js:807:3)
+    at Object.getInstalledBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/extensions.js:130:13)
+    at foundBinariesList (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:20:15)
+    at foundBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:15:5)
+    at Object.module.exports.missingBinary (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:45:5)
+    at module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/binding.js:15:30)
+    at Object.<anonymous> (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (internal/modules/cjs/loader.js:721:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:552:3)
+    at Module.require (internal/modules/cjs/loader.js:657:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.sassLoader (/workspace/softwares/api_automation_test-master/frontend/node_modules/sass-loader/lib/loader.js:46:72)
+ @ ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-33cf009a","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/common/Login.vue 4:14-404
+ @ ./src/views/common/Login.vue
+ @ ./src/routes.js
+ @ ./src/main.js
+
+ERROR in ./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-602f07ed","scoped":false,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=1!./src/views/project/api/updateApi/ApiForm.vue
+Module build failed: Error: ENOENT: no such file or directory, scandir '/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/vendor'
+    at Object.readdirSync (fs.js:807:3)
+    at Object.getInstalledBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/extensions.js:130:13)
+    at foundBinariesList (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:20:15)
+    at foundBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:15:5)
+    at Object.module.exports.missingBinary (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:45:5)
+    at module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/binding.js:15:30)
+    at Object.<anonymous> (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (internal/modules/cjs/loader.js:721:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:552:3)
+    at Module.require (internal/modules/cjs/loader.js:657:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.sassLoader (/workspace/softwares/api_automation_test-master/frontend/node_modules/sass-loader/lib/loader.js:46:72)
+ @ ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-602f07ed","scoped":false,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=1!./src/views/project/api/updateApi/ApiForm.vue 4:14-431
+ @ ./src/views/project/api/updateApi/ApiForm.vue
+ @ ./src/routes.js
+ @ ./src/main.js
+
+ERROR in ./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-5e26db43","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/projectTitle/ProjectTitle.vue
+Module build failed: Error: ENOENT: no such file or directory, scandir '/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/vendor'
+    at Object.readdirSync (fs.js:807:3)
+    at Object.getInstalledBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/extensions.js:130:13)
+    at foundBinariesList (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:20:15)
+    at foundBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:15:5)
+    at Object.module.exports.missingBinary (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:45:5)
+    at module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/binding.js:15:30)
+    at Object.<anonymous> (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (internal/modules/cjs/loader.js:721:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:552:3)
+    at Module.require (internal/modules/cjs/loader.js:657:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.sassLoader (/workspace/softwares/api_automation_test-master/frontend/node_modules/sass-loader/lib/loader.js:46:72)
+ @ ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-5e26db43","scoped":true,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/views/project/projectTitle/ProjectTitle.vue 4:14-423
+ @ ./src/views/project/projectTitle/ProjectTitle.vue
+ @ ./src/routes.js
+ @ ./src/main.js
+
+ERROR in ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-c4da777a","scoped":false,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/App.vue
+Module build failed: ModuleBuildError: Module build failed: Error: ENOENT: no such file or directory, scandir '/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/vendor'
+    at Object.readdirSync (fs.js:807:3)
+    at Object.getInstalledBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/extensions.js:130:13)
+    at foundBinariesList (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:20:15)
+    at foundBinaries (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:15:5)
+    at Object.module.exports.missingBinary (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/errors.js:45:5)
+    at module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/binding.js:15:30)
+    at Object.<anonymous> (/workspace/softwares/api_automation_test-master/frontend/node_modules/node-sass/lib/index.js:14:35)
+    at Module._compile (internal/modules/cjs/loader.js:721:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:552:3)
+    at Module.require (internal/modules/cjs/loader.js:657:17)
+    at require (internal/modules/cjs/helpers.js:20:18)
+    at Object.sassLoader (/workspace/softwares/api_automation_test-master/frontend/node_modules/sass-loader/lib/loader.js:46:72)
+    at runLoaders (/workspace/softwares/api_automation_test-master/frontend/node_modules/webpack/lib/NormalModule.js:195:19)
+    at /workspace/softwares/api_automation_test-master/frontend/node_modules/loader-runner/lib/LoaderRunner.js:367:11
+    at /workspace/softwares/api_automation_test-master/frontend/node_modules/loader-runner/lib/LoaderRunner.js:233:18
+    at runSyncOrAsync (/workspace/softwares/api_automation_test-master/frontend/node_modules/loader-runner/lib/LoaderRunner.js:143:3)
+    at iterateNormalLoaders (/workspace/softwares/api_automation_test-master/frontend/node_modules/loader-runner/lib/LoaderRunner.js:232:2)
+    at iterateNormalLoaders (/workspace/softwares/api_automation_test-master/frontend/node_modules/loader-runner/lib/LoaderRunner.js:221:10)
+    at /workspace/softwares/api_automation_test-master/frontend/node_modules/loader-runner/lib/LoaderRunner.js:236:3
+    at Object.context.callback (/workspace/softwares/api_automation_test-master/frontend/node_modules/loader-runner/lib/LoaderRunner.js:111:13)
+    at Object.module.exports (/workspace/softwares/api_automation_test-master/frontend/node_modules/vue-loader/lib/selector.js:21:8)
+ @ ./node_modules/extract-text-webpack-plugin/dist/loader.js?{"omit":1,"remove":true}!./node_modules/vue-style-loader!./node_modules/css-loader?{"minimize":true,"sourceMap":false}!./node_modules/vue-loader/lib/style-compiler?{"vue":true,"id":"data-v-c4da777a","scoped":false,"hasInlineConfig":false}!./node_modules/sass-loader/lib/loader.js?{"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./src/App.vue
+ @ ./src/App.vue
+ @ ./src/main.js
+
+  Build complete.
+
+  Tip: built files are meant to be served over an HTTP server.
+  Opening index.html over file:// won't work. 
+
+12. 运行启动django服务
+	python manage.py runserver 0.0.0.0:8000
+
+	
