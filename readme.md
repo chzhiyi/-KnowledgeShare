@@ -1,3 +1,7 @@
+### 分享初衷
+>+ 
+>+ 
+
 ### 分享人员(分享顺序)
 >+ huasheng
 >+ jingchu
@@ -20,8 +24,8 @@
 >+ 讨论时间：<=10分钟
  
 ### 分享主题汇总(时间倒叙)
->+ 2019.01.24&emsp;[浅说接口测试](https://github.com/chzhiyi/-KnowledgeShare/issues/5)
->+ 2019.01.23&emsp;[Python基本语法介绍](https://github.com/chzhiyi/-KnowledgeShare/issues/4)
+>+ 2019.01.29&emsp;[Python基本语法介绍](https://github.com/chzhiyi/-KnowledgeShare/issues/4)
+>+ 2019.01.23&emsp;[浅说接口测试](https://github.com/chzhiyi/-KnowledgeShare/issues/5)
 >+ 2019.01.22&emsp;[python接口自动化测试漫长道路从零开始](https://github.com/chzhiyi/-KnowledgeShare/issues/3)
 >+ 2019.01.21&emsp;[参见api_automation_test搭建python接口自动化框架](https://github.com/chzhiyi/-KnowledgeShare/issues/1)
 >+ 2019.01.18&emsp;[初识HTML](https://github.com/chzhiyi/-KnowledgeShare/issues/2)
