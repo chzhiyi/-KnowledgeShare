@@ -10,6 +10,7 @@
 >+ jingchu
 >+ bailian
 >+ baijing
+>+ jinqiancao
 >+ qiaosong
 
 ### 分享最低要求
