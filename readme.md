@@ -43,7 +43,7 @@
 >+ 2019.02.15&emsp;[unittest框架介绍(上)](https://github.com/chzhiyi/-KnowledgeShare/issues/12)
 >+ 2019.02.14&emsp;[Python对文件的基本操作](https://github.com/chzhiyi/-KnowledgeShare/issues/11)
 >+ 2019.02.13&emsp;[HTML列表](https://github.com/chzhiyi/-KnowledgeShare/issues/10)
->+ 2019.02.02.&emsp;[random模块中随机函数介绍、continue与break的区别](https://github.com/chzhiyi/-KnowledgeShare/issues/9)
+>+ 2019.02.02&emsp;[random模块中随机函数介绍、continue与break的区别](https://github.com/chzhiyi/-KnowledgeShare/issues/9)
 >+ 2019.02.01&emsp;[requests库的http请求常用法](https://github.com/chzhiyi/-KnowledgeShare/issues/8)
 >+ 2019.01.31&emsp;[通过动画了解7种排序算法](https://github.com/chzhiyi/-KnowledgeShare/issues/7)
 >+ 2019.01.29&emsp;[Python基本语法介绍](https://github.com/chzhiyi/-KnowledgeShare/issues/4)
