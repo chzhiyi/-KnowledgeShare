@@ -7,10 +7,10 @@
 
 ### 分享人员(分享顺序)
 >+ huasheng
+>+ jinqiancao
 >+ jingchu
 >+ bailian
 >+ baijing
->+ jinqiancao
 >+ qiaosong
 
 ### 分享最低要求
